@@ -10,26 +10,17 @@
 </head>
 <body>
 <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam; detectionMode: mono;' vr-mode-ui="enabled: false">
-
-
-
-    <a-entity camera></a-entity>
-
     <a-assets>
-        <a-asset-item id="heart" src="cora.glb"></a-asset-item>
+        <img id="earth" src="earth.jpg" />
+        <img id="moon" src="moon.jpg" />
     </a-assets>
     <a-arcube>
-         <a-entity
-                    id="bowser-model"
-                    scale="8 8 8"
-                    
-                   
-                    gltf-model="#heart"
-                    class="clickable"
-                    gesture-handler>
-                </a-entity>
+        <a-sphere src="#earth">
+            <a-entity animation="property: rotation; from: 0 0 0; to: 0 360 0; ease: linear; loop: true; dur: 60000">
+                <a-sphere position="0 .3 1.5" src="#moon" scale=".2 .2 .2" animation="property: rotation; from: 0 0 0; to: 0 360 0; ease: linear; loop: true; dur: 30000"></a-sphere>
+            </a-entity>
+        </a-sphere>
     </a-arcube>
-  
     <a-entity camera></a-entity>
 </a-scene>
 </body>
