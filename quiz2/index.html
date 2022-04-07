@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<head>
+    <script src="../vendor/aframe.min.js"></script>
+    <script src="../vendor/aframe-ar.js"> </script>
+    <script src="../vendor/aframe-arcube.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://rawgit.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            text-align: center;
+            opacity: .66;
+            transition: .5s all;
+        }
+
+        .header .correct {
+            color: green;
+        }
+
+        .header .incorrect {
+            color: darkred;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 255;
+            opacity: .66;
+            transition: 2s all;
+        }
+
+        .footer div {
+            float: left;
+            font-size: 24px;
+            min-width: 33%;
+            margin-bottom: 5px;
+            text-align: center;
+            transition: .5s all;
+        }
+
+        .footer.result .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .footer.result .incorrect {
+            color: red;
+            text-decoration: line-through;
+        }
+
+        .footer.invisible {
+            bottom: -50px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam; detectionMode: mono;' vr-mode-ui="enabled: false">
+    <a-assets>
+        <a-asset-item id="heart" src="heart.glb"></a-asset-item>
+    </a-assets>
+    <a-arcube>
+        <a-entity rotation="180 0 0">
+            <a-gltf-model src="#heart"  scale="8 8 8"></a-gltf-model>
+        </a-entity>
+    </a-arcube>
+
+    <a-entity camera></a-entity>
+</a-scene>
+
+
+</body>
+</html>
